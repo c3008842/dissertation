@@ -128,6 +128,8 @@ strong {
   SECTION               
 -----------------------------------------*/
 .main-wrapper {
+
+  background-image: url("../images/home.png");
   background: var(--section-bg-color);
   min-height: calc(100vh - 65px);
 }
