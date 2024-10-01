@@ -81,9 +81,9 @@ WSGI_APPLICATION = 'django_hearthub.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': '',  # Database name from phpMyAdmin
+        'NAME': 'hearthub',  # Database name from phpMyAdmin
         'USER': 'root',       # MySQL username (root by default)
-        'PASSWORD': '',   # MySQL password (empty by default)
+        'PASSWORD': 'Kavya@12345',   # MySQL password (empty by default)
         'HOST': 'localhost',           # Database host (localhost for local development)
         'PORT': '3306',                # MySQL port (3306 by default)
     }
