@@ -5,7 +5,14 @@ from django.conf import settings
 # Create your views here.
 
 def home(request):
-    return render(request, 'index.html')
+    return render(request, 'home.html')
 
 def settings(request):
-    return render(request, 'setting.html')
+    return render(request, 'changepassword.html')
+
+def base(request):
+    return render(request, 'base.html')
+
+
+def data(request):
+    return render(request, 'transaction_details.html')
