@@ -7,12 +7,26 @@ from django.conf import settings
 def home(request):
     return render(request, 'home.html')
 
-def settings(request):
-    return render(request, 'changepassword.html')
+def login(request):
+    return render(request, 'login.html')
+
+def registrationPage(request):
+    return render(request, 'registrationPage.html')
 
 def base(request):
     return render(request, 'base.html')
 
+def resetPage(request):
+    return render(request, 'resetPage.html')
 
-def data(request):
-    return render(request, 'transaction_details.html')
+def resetPasswordLink(request):
+    return render(request, 'resetPasswordMessage.html')
+
+def resetPasswordPage(request):
+    return render(request, 'resetPasswordPage.html')
+
+def resetPasswordSuccessMessage(request):
+    return render(request, 'resetPasswordSuccessMessage.html')
+
+def barGraph(request):
+    return render(request, 'bargraph.html')

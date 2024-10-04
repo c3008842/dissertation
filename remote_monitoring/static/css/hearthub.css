@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: center;
     background-color: #df5e82;
-    height: 96px;
+    height: 120px;
     
   }
 
@@ -33,6 +33,7 @@
   body {
     font-family: Arial, sans-serif;
     background-color: #e0e0e0;
+    overflow: hidden;
   }
 
   /* SIDEBAR CONTAINER   */
@@ -45,7 +46,7 @@
     left: 0;
     padding-top: 20px;
     transition: width 0.3s ease;
-    margin-top: 95px;
+    margin-top: 120px;
   }
 
   /* Sidebar links */
@@ -72,14 +73,18 @@
     height: 100vh;
   }
 
+
+  /* -----------*/ 
   /* LOGIN PAGE */
+  /* ----------- */ 
 
 .login-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
-    padding-top: 40px;
+    height: 130%;
+    padding-top: 100px;
+    padding-bottom: 200px;
 }
 
 .login-box {
@@ -89,6 +94,7 @@
     border-radius: 8px;
     width: 100%;
     max-width: 400px;
+    
 }
 
 h2 {
@@ -120,6 +126,7 @@ input {
     color: #ffffff;
     border: none;
     padding: 10px;
+    margin-top: 10px;
     border-radius: 4px;
     font-size: 16px;
     cursor: pointer;
@@ -142,6 +149,64 @@ input {
 
 .login-options a:hover {
     text-decoration: underline;
+}
+
+canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+.main {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* --------------------*/ 
+/* RESET PASSWORD PAGE */
+/* ------------------- */ 
+
+.reset-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.reset-box {
+  background-color: #ffffff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  text-align: center;
+  width: 100%;
+  max-width: 700px;
+  padding-top: 40px;
+  margin-top: 150px;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+p {
+  margin-bottom: 20px;
+}
+
+.btn-ok {
+  background-color: #df5e82;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn-ok:hover {
+  background-color: #434190;
 }
 
 
@@ -232,7 +297,7 @@ input {
     }
   }
 
-  /* Responsive Design for LOGIN PAGE */
+  /* Responsive Design for LOGIN PAGE and RESET PASSWORD*/
   @media (max-width: 600px) {
     .login-box {
         padding: 15px;
@@ -243,4 +308,14 @@ input {
         padding: 8px;
         font-size: 14px;
     }
+
+    .reset-box {
+      padding: 15px;
+      width: 90%;
+  }
+
+  .btn-ok {
+      padding: 10px 15px;
+      font-size: 14px;
+  }
 }

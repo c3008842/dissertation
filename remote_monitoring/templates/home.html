@@ -1,7 +1,8 @@
 
 {% extends 'base.html' %}
 {% load static %}
- {% block content %} 
+
+{% block content %} 
   <!-- Sidebar -->
   <div class="sidebar">
   <a href="#overview">Overview</a>
@@ -11,7 +12,15 @@
   </div>
 
 
+  <div class="main">
+    <!-- Bar chart -->
+    {% block bargraph %} 
 
+    {% endblock %} 
+    
+</div>
+
+ 
   {% endblock %} 
 
 
