@@ -30,3 +30,6 @@ def resetPasswordSuccessMessage(request):
 
 def barGraph(request):
     return render(request, 'bargraph.html')
+
+def healthStatus(request):
+    return render(request, 'overview.html')

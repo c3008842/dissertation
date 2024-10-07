@@ -12,5 +12,6 @@ urlpatterns = [
     path('reset/password/', views.resetPasswordPage, name="reset/password/"),
     path('reset/success/', views.resetPasswordSuccessMessage, name="reset/success/"),
     path('graph/', views.barGraph, name="graph"),
+    path('health/', views.healthStatus, name="health"),
    
 ]

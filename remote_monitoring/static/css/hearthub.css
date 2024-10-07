@@ -59,6 +59,11 @@
     transition: 0.3s;
   }
 
+  .sidebar a.active {
+    background-color:rgb(159, 204, 205);
+    color: white;
+}
+
   /* Hover effect for links */
   .sidebar a:hover {
     background-color: #df5e82;
@@ -151,18 +156,61 @@ input {
     text-decoration: underline;
 }
 
-canvas {
-  max-width: 100%;
-  height: auto;
-}
-
+/* --------------------*/ 
+/* HEALTH STATUS PAGE */
+/* ------------------- */
 .main {
   flex: 1;
-  padding: 20px;
+  padding-left: 200px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 40%;
+}
+
+.dashboard-card {
+  background-color: #e8e8e8;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 }
+
+.dashboard-card p {
+  font-size: 18px;
+  margin: 0;
+}
+
+.status-active {
+  color: green;
+  font-weight: bold;
+}
+
+.status-inactive {
+  color: red;
+  font-weight: bold;
+}
+
+
+/* --------------------*/ 
+/* BAR GRAPH PAGE */
+/* ------------------- */
+.graph {
+  flex: 1;
+  padding-left: 200px;
+  display: flex;
+  flex-direction: column;
+  height: 40%;
+}
+
+canvas {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+
 
 /* --------------------*/ 
 /* RESET PASSWORD PAGE */
@@ -209,7 +257,6 @@ p {
   background-color: #434190;
 }
 
-
   /* Responsive Design for header */
 
   /* Medium screens (tablets, small laptops) */
@@ -251,6 +298,7 @@ p {
     .header {
       flex-direction: column;
       align-items: center;
+      
     }
 
     .header-image {
@@ -317,5 +365,44 @@ p {
   .btn-ok {
       padding: 10px 15px;
       font-size: 14px;
+  }
+
+  .dashboard-card p {
+    font-size: 14px;
+}
+
+.dashboard-card {
+    padding: 10px;
+}
+
+.main {
+    padding-left: 100px;
+    height: auto;
+}
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  .main {
+      padding-left: 210px;
+  }
+
+  .dashboard-card p {
+      font-size: 16px;
+  }
+
+  .dashboard-card {
+      padding: 15px;
+  }
+}
+
+/* For large devices (laptops/desktops, over 1024px wide) */
+@media (min-width: 1025px) {
+  .main {
+      padding-left: 200px;
+      height: 40%;
+  }
+
+  .dashboard-card p {
+      font-size: 18px;
   }
 }

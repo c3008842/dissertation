@@ -5,22 +5,52 @@
 {% block content %} 
   <!-- Sidebar -->
   <div class="sidebar">
-  <a href="#overview">Overview</a>
-  <a href="#view-data">View Data</a>
-  <a href="#change-password">Change Password</a>
+  <a href="{% url 'health' %}" class="sidebar-link" id="health-link">Health Status</a>
+  <a href="{% url 'graph' %}" class="sidebar-link" id="user-data-link">User Engagement Metrics</a>
+  <a href="#change-password" class="sidebar-link" id="change-password-link">Change Password</a>
   <a href="#logout">Logout</a>
   </div>
 
+  
+  <script>
+    // Get all sidebar links
+    const sidebarLinks = document.querySelectorAll('.sidebar-link');
 
+    // Function to handle click events
+    sidebarLinks.forEach(link => {
+        link.addEventListener('click', function () {
+            // Remove the 'active' class from all links
+            sidebarLinks.forEach(link => link.classList.remove('active'));
+
+            // Add the 'active' class to the clicked link
+            this.classList.add('active');
+        });
+    });
+</script>
+
+  <section id="health-link"> 
   <div class="main">
-    <!-- Bar chart -->
-    {% block bargraph %} 
+    {% block health %} 
 
-    {% endblock %} 
-    
-</div>
+    {% endblock %}
 
- 
+  </div>
+</section>
+  
+<section id="user-data-link">
+  <div class="graph">
+    {% block graph %} 
+
+    {% endblock %}
+
+  </div>
+</section>
+
+
+
+
   {% endblock %} 
+
+
 
 

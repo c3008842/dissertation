@@ -1,9 +1,13 @@
 {% extends 'home.html' %}
 {% load static %}
-{% block bargraph %}  
+
+{% block graph %} 
+
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<canvas id="hearthubBarChart"></canvas> 
+
+<canvas id="hearthubBarChart"></canvas>
+
 
 <script>
     const ctx = document.getElementById('hearthubBarChart').getContext('2d');
@@ -13,12 +17,12 @@
             labels: ['Hearthub Machine 1', 'Hearthub Machine 2', 'Hearthub Machine 3'],
             datasets: [
                 {
-                    label: 'Active Sessions',
+                    label: 'Engaged',
                     data: [30, 45, 25], // Example data for active sessions
-                    backgroundColor: 'blue',
+                    backgroundColor: 'green',
                 },
                 {
-                    label: 'Inactive Sessions',
+                    label: 'Unengaged',
                     data: [10, 5, 20], // Example data for inactive sessions
                     backgroundColor: 'orange',
                 }
@@ -30,14 +34,14 @@
                 x: {
                     title: {
                         display: true,
-                        text: 'Hearthub Machines'
+                       
                     }
                 },
                 y: {
                     beginAtZero: true,
                     title: {
                         display: true,
-                        text: 'Sessions'
+                       
                     }
                 }
             }
@@ -45,5 +49,6 @@
     });
 </script>
 
-              
+
+
 {% endblock %} 
