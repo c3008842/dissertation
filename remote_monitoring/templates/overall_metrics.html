@@ -1,0 +1,59 @@
+{% extends 'home.html' %}
+{% load static %}
+
+{% block overall_metrics %} 
+
+<!-- User overall engagement metrics -->
+<main class="content">
+    <h2>Overall Metrics</h2>
+    <canvas id="myPieChart"></canvas> <!-- Canvas for pie chart -->
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Pie chart configuration
+    const ctx = document.getElementById('myPieChart').getContext('2d');
+    const myPieChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ['Footfall', 'Loitering', 'Partial Session', 'Full Session', 'Engaged'],
+            datasets: [{
+                data: [15, 15, 20, 30, 10], // Example data values for each category
+                backgroundColor: [
+                   '#FF9999', // Richer pink for Footfall
+                   '#FFCC99', // Richer orange for Loitering
+                   '#FFFF99', // Richer yellow for Partial Session
+                   '#99CC99', // Richer green for Full Session
+                   '#99CCFF' 
+                ],
+                hoverOffset: 4 // Hover effect
+            }]
+        },
+        options: {
+            responsive: true, // Ensure chart adjusts to screen size
+                maintainAspectRatio: false, // Allow custom aspect ratio for more flexibility
+                layout: {
+                    padding: {
+                        top: 0,   // Remove extra padding at the top
+                        bottom: 0,
+                        left: 0,
+                        right: 0
+                    }
+                },
+                animation: {
+                    animateScale: true,
+                    animateRotate: true
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'bottom', // Position legend at the bottom
+                    }
+                }
+            }
+    });
+</script>
+
+
+
+{% endblock %} 

@@ -5,8 +5,10 @@
 {% block content %} 
   <!-- Sidebar -->
   <div class="sidebar">
-  <a href="{% url 'health' %}" class="sidebar-link" id="health-link">Health Status</a>
-  <a href="{% url 'graph' %}" class="sidebar-link" id="user-data-link">User Engagement Metrics</a>
+  <a href="{% url 'health' %}" class="sidebar-link" id="health-link">Dashboard</a>
+  <a href="{% url 'overall/metrics' %}" class="sidebar-link" id="user-data-link">Overall Metrics</a>
+  <a href="{% url 'graph' %}" class="sidebar-link" id="user-metrics">User Engagement Metrics</a>
+  <a href="{% url 'graph' %}" class="sidebar-link" id="user-activity">All Session Data</a>
   <a href="#change-password" class="sidebar-link" id="change-password-link">Change Password</a>
   <a href="#logout">Logout</a>
   </div>
@@ -16,6 +18,17 @@
     // Get all sidebar links
     const sidebarLinks = document.querySelectorAll('.sidebar-link');
 
+    // Check for an existing active link in local storage (optional persistence)
+    const activeLinkId = localStorage.getItem('activeLinkId');
+
+    // Set the active link based on local storage if available
+    if (activeLinkId) {
+        document.getElementById(activeLinkId).classList.add('active');
+    } else {
+        // Set the default active link (e.g., first link)
+        sidebarLinks[0].classList.add('active');
+    }
+
     // Function to handle click events
     sidebarLinks.forEach(link => {
         link.addEventListener('click', function () {
@@ -24,17 +37,35 @@
 
             // Add the 'active' class to the clicked link
             this.classList.add('active');
+
+            // Optionally save the active link to local storage
+            localStorage.setItem('activeLinkId', this.id);
         });
     });
 </script>
 
-  <section id="health-link"> 
-  <div class="main">
-    {% block health %} 
+<div class="machine-container" id="machine-container">
+  {% block health %} 
 
-    {% endblock %}
+  
+  {% endblock %}
+    
 
-  </div>
+</div>
+
+<section id="overall_metrics"> 
+  {% block overall_metrics %} 
+
+  
+   {% endblock %} 
+  
+
+</section>
+
+<section id="user-activity"> 
+  
+  
+
 </section>
   
 <section id="user-data-link">

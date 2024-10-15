@@ -1,0 +1,39 @@
+{% extends 'home.html' %}
+{% load static %}
+
+{% block health %}
+    
+        <!-- Example for existing machines -->
+        <div class="machine" data-status="healthy">
+            <div class="status-circle"></div>
+            <span>HeartHub Machine 1</span>
+        </div>
+
+        <div class="machine" data-status="unhealthy">
+            <div class="status-circle"></div>
+            <span>HeartHub Machine 2</span>
+        </div>
+
+        <div class="machine" data-status="healthy">
+            <div class="status-circle"></div>
+            <span>HeartHub Machine 3</span>
+        </div>
+
+        <div class="machine" data-status="healthy">
+            <div class="status-circle"></div>
+            <span>HeartHub Machine 4</span>
+        </div>
+
+        <div class="machine" data-status="healthy">
+            <div class="status-circle"></div>
+            <span>HeartHub Machine 5</span>
+        </div>
+
+        <div class="machine" data-status="healthy">
+            <div class="status-circle"></div>
+            <span>HeartHub Machine 6</span>
+        </div>
+
+    <script src="{% static 'js/health.js' %}"></script>
+
+{% endblock %}

@@ -1,17 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #e0e0e0;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;  /* Ensure the body takes up the full height */
+  overflow-x: hidden;
+}
+
 .header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #df5e82;
-    height: 120px;
     
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #df5e82;
+  color: white;
+  display: flex;               /* Use flexbox for alignment */
+  align-items: center;         /* Center items vertically */
+  padding: 0 20px;            /* Horizontal padding */
+  z-index: 1000;
+  
+  height: 120px;
+  width: 100%;
+       
   }
 
   /* Styling for the image */
   .header-image {
     width: 70px;
-    height: 70px;
-    margin-left: 20px;
+    height: 70px; 
     
   }
 
@@ -19,25 +43,12 @@
   .header-title {
     font-size: 24px;
     color: white;
-    margin: 0;
-    
-    
-  }
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #e0e0e0;
-    overflow: hidden;
+    margin: 0;   
   }
 
   /* SIDEBAR CONTAINER   */
   .sidebar {
+   
     height: 100vh;
     width: 200px;
     background-color: white; /* Cement background color */
@@ -47,9 +58,14 @@
     padding-top: 20px;
     transition: width 0.3s ease;
     margin-top: 120px;
+    z-index: 1000; /* Ensure sidebar is on top */
+    
   }
 
+  /* ---------------*/
   /* Sidebar links */
+  /* --------------*/
+
   .sidebar a {
     padding: 15px 20px;
     text-decoration: none;
@@ -60,13 +76,13 @@
   }
 
   .sidebar a.active {
-    background-color:rgb(159, 204, 205);
+    background-color: #df5e82;
     color: white;
 }
 
   /* Hover effect for links */
   .sidebar a:hover {
-    background-color: #df5e82;
+    background-color:rgb(65, 97, 167);
     color: white;
   }
 
@@ -77,6 +93,31 @@
     background-color: #f4f4f4;
     height: 100vh;
   }
+
+  .status-card {
+    width: 100%;
+    max-width: 300px;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.status-card.active {
+    background-color: #d4edda;
+    border-left: 5px solid #28a745;
+}
+
+.status-card.error {
+    background-color: #f8d7da;
+    border-left: 5px solid #dc3545;
+}
+
+.status-card:hover {
+    transform: scale(1.05);
+}
 
 
   /* -----------*/ 
@@ -159,40 +200,64 @@ input {
 /* --------------------*/ 
 /* HEALTH STATUS PAGE */
 /* ------------------- */
-.main {
-  flex: 1;
-  padding-left: 200px;
+.machine-container {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 40%;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-left: 200px;
+  margin-top: 130px;
+  height: auto; 
+  width:auto;
+  overflow-y: auto;
+ 
 }
 
-.dashboard-card {
-  background-color: #e8e8e8;
-  border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 20px;
+.machine {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: flex-start;
+  margin: 10px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  flex: 1 1 200px;
+  max-width: 300px;
 }
 
-.dashboard-card p {
+.status-circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.machine span {
   font-size: 18px;
-  margin: 0;
+  font-weight:500;
+  color:#484848;
 }
 
-.status-active {
-  color: green;
-  font-weight: bold;
+/* -----------------*/
+/* Overall Metrics */
+/* ----------------*/
+
+.content {
+  margin-left: 100px;
+  padding: 20px;
+  flex-grow: 1;
+  height: 500px;
 }
 
-.status-inactive {
-  color: red;
-  font-weight: bold;
+.content, h2 {
+  font-size: 20px;
+  color:#333;
 }
 
+canvas {
+  max-width: 100%; /* Make canvas responsive */
+  height: auto;    /* Maintain aspect ratio */
+}
 
 /* --------------------*/ 
 /* BAR GRAPH PAGE */
@@ -205,11 +270,6 @@ input {
   height: 40%;
 }
 
-canvas {
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-}
 
 
 /* --------------------*/ 
@@ -257,10 +317,26 @@ p {
   background-color: #434190;
 }
 
+.btn-ok1 {
+  background-color: #df5e82;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 60px;
+}
+
+.btn-ok1:hover {
+  background-color: #434190;
+}
+
   /* Responsive Design for header */
 
   /* Medium screens (tablets, small laptops) */
   @media (min-width: 768px) {
+   
     .header {
       padding: 30px;
       
@@ -278,6 +354,8 @@ p {
 
   /* Large screens (laptops, desktops) */
   @media (min-width: 992px) {
+
+
     .header {
     padding-left: 40px;
 
@@ -295,24 +373,29 @@ p {
 
   /* Small screens (mobile phones) */
   @media (min-width: 300px) {
+
+
     .header {
       flex-direction: column;
       align-items: center;
+     
+    
       
     }
 
     .header-image {
-      margin-left: 40px;
+      margin-left: 20px;
       margin-bottom: 10px;
     }
 
     .header-title {
       font-size: 20px;
-      padding-left: 50px;
+      padding-left: 20px;
     }
   }
 
   @media (max-width: 768px) {
+    
     
     .sidebar {
       width: 100px;
@@ -331,6 +414,8 @@ p {
   
  /* Responsive Design for Sidebar */
   @media (max-width: 480px) {
+
+
     .sidebar {
       width: 90px;
     }
@@ -366,6 +451,12 @@ p {
       padding: 10px 15px;
       font-size: 14px;
   }
+
+  .btn-ok1 {
+    padding: 10px 15px;
+    font-size: 14px;
+    margin-left: 50px;
+}
 
   .dashboard-card p {
     font-size: 14px;
@@ -406,3 +497,29 @@ p {
       font-size: 18px;
   }
 }
+
+/* --------------------------------*/ 
+/* Health Status Responsive design */
+/* ------------------------------- */
+
+@media (max-width: 768px) {
+
+  .machine-container{
+    height: 700px; /* Reduce height for smaller screens */
+        margin-left: 90px;
+        margin-top: 150px;
+        
+      
+  }
+  .machine {
+      flex: 1 1 100%;
+      max-width: fit-content;
+      
+  }
+
+  
+  
+}
+
+
+

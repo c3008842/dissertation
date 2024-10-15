@@ -4,50 +4,6 @@
 {% block graph %} 
 
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<canvas id="hearthubBarChart"></canvas>
-
-
-<script>
-    const ctx = document.getElementById('hearthubBarChart').getContext('2d');
-    const hearthubBarChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ['Hearthub Machine 1', 'Hearthub Machine 2', 'Hearthub Machine 3'],
-            datasets: [
-                {
-                    label: 'Engaged',
-                    data: [30, 45, 25], // Example data for active sessions
-                    backgroundColor: 'green',
-                },
-                {
-                    label: 'Unengaged',
-                    data: [10, 5, 20], // Example data for inactive sessions
-                    backgroundColor: 'orange',
-                }
-            ]
-        },
-        options: {
-            responsive: true,
-            scales: {
-                x: {
-                    title: {
-                        display: true,
-                       
-                    }
-                },
-                y: {
-                    beginAtZero: true,
-                    title: {
-                        display: true,
-                       
-                    }
-                }
-            }
-        }
-    });
-</script>
 
 
 

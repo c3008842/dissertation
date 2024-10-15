@@ -32,4 +32,7 @@ def barGraph(request):
     return render(request, 'bargraph.html')
 
 def healthStatus(request):
-    return render(request, 'overview.html')
+    return render(request, 'health_dashboard.html')
+
+def overallMetrics(request):
+    return render(request, 'overall_metrics.html')
