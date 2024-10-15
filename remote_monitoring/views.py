@@ -28,11 +28,15 @@ def resetPasswordPage(request):
 def resetPasswordSuccessMessage(request):
     return render(request, 'resetPasswordSuccessMessage.html')
 
-def barGraph(request):
-    return render(request, 'bargraph.html')
+def userEngagementMetrics(request):
+    return render(request, 'userEngagementMetrics.html')
 
 def healthStatus(request):
     return render(request, 'health_dashboard.html')
 
 def overallMetrics(request):
     return render(request, 'overall_metrics.html')
+
+
+def allSessionData(request):
+    return render(request, 'allSessionData.html')

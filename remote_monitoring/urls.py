@@ -11,8 +11,10 @@ urlpatterns = [
     path('reset/message/', views.resetPasswordLink, name="reset/message/"),
     path('reset/password/', views.resetPasswordPage, name="reset/password/"),
     path('reset/success/', views.resetPasswordSuccessMessage, name="reset/success/"),
-    path('graph/', views.barGraph, name="graph"),
+    path('user/engagement/metrics', views.userEngagementMetrics, name="user/engagement/metrics"),
     path('health/', views.healthStatus, name="health"),
     path('overall/metrics', views.overallMetrics, name="overall/metrics"),
+    path('session/data', views.allSessionData, name="session/data"),
+   
    
 ]

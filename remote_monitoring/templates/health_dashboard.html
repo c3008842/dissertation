@@ -2,7 +2,8 @@
 {% load static %}
 
 {% block health %}
-    
+
+<div class="machine-container" id="machine-container">
         <!-- Example for existing machines -->
         <div class="machine" data-status="healthy">
             <div class="status-circle"></div>
@@ -32,6 +33,7 @@
         <div class="machine" data-status="healthy">
             <div class="status-circle"></div>
             <span>HeartHub Machine 6</span>
+        </div>
         </div>
 
     <script src="{% static 'js/health.js' %}"></script>

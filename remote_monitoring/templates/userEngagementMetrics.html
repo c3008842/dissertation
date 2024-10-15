@@ -1,0 +1,67 @@
+{% extends 'home.html' %}
+{% load static %}
+
+{% block graph %} 
+
+<div class="chart-container">
+    <canvas id="myBarChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Bar chart configuration with Machines on X-axis and Metrics as bars
+    const ctx = document.getElementById('myBarChart').getContext('2d');
+    const myBarChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Machine 1', 'Machine 2', 'Machine 3', 'Machine 4', 'Machine 5', 'Machine 6','Machine 7'], // Machines on the X-axis
+            datasets: [
+                {
+                    label: 'Footfall',
+                    data: [30, 40, 35,30,20,10], // Example data for Footfall
+                    backgroundColor: '#FF9999' // Mild pink for Footfall
+                },
+                {
+                    label: 'Loitering',
+                    data: [20, 30, 25, 20, 10, 14], // Example data for Loitering
+                    backgroundColor: '#FFCC99' // Mild orange for Loitering
+                },
+                {
+                    label: 'Partial Sessions',
+                    data: [25, 20, 30, 10, 50, 10], // Example data for Partial Sessions
+                    backgroundColor: '#FFFF99' // Mild yellow for Partial Sessions
+                },
+                {
+                    label: 'Full Sessions',
+                    data: [35, 25, 40, 10, 20, 30, 10], // Example data for Full Sessions
+                    backgroundColor: '#99CC99' // Mild green for Full Sessions
+                },
+                {
+                    label: 'Engaged Sessions',
+                    data: [40, 35, 45, 20, 30, 10], // Example data for Engaged Sessions
+                    backgroundColor: '#99CCFF' // Mild blue for Engaged Sessions
+                }
+            ]
+        },
+        options: {
+            responsive: true, // Make chart responsive
+            maintainAspectRatio: false, // Allow chart to adjust with the container
+            scales: {
+                y: {
+                    beginAtZero: true // Ensure Y-axis starts at 0
+                }
+            },
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top' // Position legend at the top
+                },
+                tooltip: {
+                    enabled: true // Enable tooltips for hover effects
+                }
+            }
+        }
+    });
+</script>
+
+{% endblock %} 

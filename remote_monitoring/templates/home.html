@@ -7,8 +7,8 @@
   <div class="sidebar">
   <a href="{% url 'health' %}" class="sidebar-link" id="health-link">Dashboard</a>
   <a href="{% url 'overall/metrics' %}" class="sidebar-link" id="user-data-link">Overall Metrics</a>
-  <a href="{% url 'graph' %}" class="sidebar-link" id="user-metrics">User Engagement Metrics</a>
-  <a href="{% url 'graph' %}" class="sidebar-link" id="user-activity">All Session Data</a>
+  <a href="{% url 'user/engagement/metrics' %}" class="sidebar-link" id="user-metrics">User Engagement Metrics</a>
+  <a href="{% url 'session/data' %}" class="sidebar-link" id="session-data">All Session Data</a>
   <a href="#change-password" class="sidebar-link" id="change-password-link">Change Password</a>
   <a href="#logout">Logout</a>
   </div>
@@ -44,14 +44,14 @@
     });
 </script>
 
-<div class="machine-container" id="machine-container">
+
   {% block health %} 
 
   
   {% endblock %}
     
 
-</div>
+
 
 <section id="overall_metrics"> 
   {% block overall_metrics %} 
@@ -62,19 +62,21 @@
 
 </section>
 
-<section id="user-activity"> 
+<section id="user-metrics"> 
+  {% block graph %} 
+
   
+  {% endblock %} 
   
 
 </section>
   
-<section id="user-data-link">
-  <div class="graph">
-    {% block graph %} 
+<section id="session-data">
 
-    {% endblock %}
+  {% block session %} 
 
-  </div>
+  {% endblock %}
+
 </section>
 
 
