@@ -3,9 +3,23 @@
 
 {% block graph %} 
 
+
+<select id="searchMachine" onchange="filterTable()">
+    <option value="">Select a machine</option>
+    <option value="Machine 1">Machine 1</option>
+    <option value="Machine 2">Machine 2</option>
+    <option value="Machine 3">Machine 3</option>
+    <option value="Machine 4">Machine 4</option>
+</select>
+
 <div class="chart-container">
+   
+
     <canvas id="myBarChart"></canvas>
 </div>
+
+
+
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
@@ -14,31 +28,31 @@
     const myBarChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['Machine 1', 'Machine 2', 'Machine 3', 'Machine 4', 'Machine 5', 'Machine 6','Machine 7'], // Machines on the X-axis
+            labels: ['Machine 1'], // Machines on the X-axis
             datasets: [
                 {
                     label: 'Footfall',
-                    data: [30, 40, 35,30,20,10], // Example data for Footfall
+                    data: [30], // Example data for Footfall
                     backgroundColor: '#FF9999' // Mild pink for Footfall
                 },
                 {
                     label: 'Loitering',
-                    data: [20, 30, 25, 20, 10, 14], // Example data for Loitering
+                    data: [20], // Example data for Loitering
                     backgroundColor: '#FFCC99' // Mild orange for Loitering
                 },
                 {
                     label: 'Partial Sessions',
-                    data: [25, 20, 30, 10, 50, 10], // Example data for Partial Sessions
+                    data: [25], // Example data for Partial Sessions
                     backgroundColor: '#FFFF99' // Mild yellow for Partial Sessions
                 },
                 {
                     label: 'Full Sessions',
-                    data: [35, 25, 40, 10, 20, 30, 10], // Example data for Full Sessions
+                    data: [35], // Example data for Full Sessions
                     backgroundColor: '#99CC99' // Mild green for Full Sessions
                 },
                 {
                     label: 'Engaged Sessions',
-                    data: [40, 35, 45, 20, 30, 10], // Example data for Engaged Sessions
+                    data: [40], // Example data for Engaged Sessions
                     backgroundColor: '#99CCFF' // Mild blue for Engaged Sessions
                 }
             ]

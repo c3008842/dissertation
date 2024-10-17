@@ -1,0 +1,49 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block add_email %}           
+
+<section class="change-container">
+    
+    <div class="change-box">
+        
+        
+        <form action="your-login-handler.php" method="post">
+
+            <div class="input-group">
+                <label for="email">Enter Machine Name:</label>
+                <input type="text" id="email" name="text" required>
+            </div>
+
+            <div class="input-group">
+                <label for="email">Primary Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="input-group">
+                <label for="email">Secondary Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="input-group">
+                <label for="email">Optional Email:</label>
+                <input type="email" id="email" name="email" >
+            </div>
+
+            <div class="input-group">
+                <label for="email">Option Email:</label>
+                <input type="email" id="email" name="email" >
+            </div>
+
+            <div class="input-group">
+                <label for="email">Optional Email:</label>
+                <input type="email" id="email" name="email" >
+            </div>
+             
+
+            <button type="submit" class="btn-login">Confirm</button>
+            
+        </form>
+        
+    </div>
+</section>   
+{% endblock %} 

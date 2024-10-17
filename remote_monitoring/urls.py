@@ -15,6 +15,8 @@ urlpatterns = [
     path('health/', views.healthStatus, name="health"),
     path('overall/metrics', views.overallMetrics, name="overall/metrics"),
     path('session/data', views.allSessionData, name="session/data"),
+    path('change/password', views.changePassword, name="change/password"),
+    path('add/email', views.addEmail, name="add/email"),
    
    
 ]

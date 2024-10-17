@@ -40,3 +40,11 @@ def overallMetrics(request):
 
 def allSessionData(request):
     return render(request, 'allSessionData.html')
+
+
+def changePassword(request):
+    return render(request, 'changePassword.html')
+
+
+def addEmail(request):
+    return render(request, 'addEmail.html')

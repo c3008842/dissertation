@@ -4,6 +4,15 @@
 {% block session %} 
 
 <div class="table-container">
+
+    <select id="searchInput" onchange="filterTable()">
+        <option value="">Select a machine</option>
+        <option value="Machine 1">Machine 1</option>
+        <option value="Machine 2">Machine 2</option>
+        <option value="Machine 3">Machine 3</option>
+        <option value="Machine 4">Machine 4</option>
+    </select>
+    
     <table>
         <thead>
             <tr>
@@ -14,6 +23,8 @@
                 <th>Feedback</th>
                 <th>Overall Score</th>
                 <th>Watch CPR Animation</th>
+                <th>Did you watch</th>
+                <th>Did you watch</th>
             </tr>
         </thead>
         <tbody>
@@ -25,7 +36,8 @@
                 <td>Correct</td>
                 <td>Good</td>
                 <td>95%</td>
-                <td><button class="watch-btn">Watch Animation</button></td>
+                <td>yes</td>
+                <td>yes</td>
             </tr>
             <!-- Example Row 2 -->
             <tr>
@@ -35,7 +47,8 @@
                 <td>Incorrect</td>
                 <td>Needs Improvement</td>
                 <td>80%</td>
-                <td><button class="watch-btn">Watch Animation</button></td>
+                <td>yes</td>
+                <td>yes</td>
             </tr>
             <!-- Example Row 3 -->
             <tr>
@@ -45,11 +58,365 @@
                 <td>Correct</td>
                 <td>Excellent</td>
                 <td>98%</td>
-                <td><button class="watch-btn">Watch Animation</button></td>
+                <td>yes</td>
+                <td>yes</td>
+            </tr>
+
+            <tr>
+                <td>003</td>
+                <td>110 bpm</td>
+                <td>6.0 cm</td>
+                <td>Correct</td>
+                <td>Excellent</td>
+                <td>98%</td>
+                <td>yes</td>
+                <td>yes</td>
+            </tr>
+
+            <tr>
+                <td>003</td>
+                <td>110 bpm</td>
+                <td>6.0 cm</td>
+                <td>Correct</td>
+                <td>Excellent</td>
+                <td>98%</td>
+                <td>yes</td>
+                <td>yes</td>
+            </tr>
+
+            <tr>
+                <td>003</td>
+                <td>110 bpm</td>
+                <td>6.0 cm</td>
+                <td>Correct</td>
+                <td>Excellent</td>
+                <td>98%</td>
+                <td>yes</td>
+                <td>yes</td>
+            </tr>
+
+            <tr>
+                <td>003</td>
+                <td>110 bpm</td>
+                <td>6.0 cm</td>
+                <td>Correct</td>
+                <td>Excellent</td>
+                <td>98%</td>
+                <td>yes</td>
+                <td>yes</td>
+            </tr>
+
+            <tr>
+                <td>003</td>
+                <td>110 bpm</td>
+                <td>6.0 cm</td>
+                <td>Correct</td>
+                <td>Excellent</td>
+                <td>98%</td>
+                <td>yes</td>
+                <td>yes</td>
+            </tr>
+
+            <tr>
+                <td>003</td>
+                <td>110 bpm</td>
+                <td>6.0 cm</td>
+                <td>Correct</td>
+                <td>Excellent</td>
+                <td>98%</td>
+                <td>yes</td>
+                <td>yes</td>
+            </tr>
+
+            <tr>
+                <td>003</td>
+                <td>110 bpm</td>
+                <td>6.0 cm</td>
+                <td>Correct</td>
+                <td>Excellent</td>
+                <td>98%</td>
+                <td>yes</td>
+                <td>yes</td>
+            </tr>
+
+            <tr>
+                <td>003</td>
+                <td>110 bpm</td>
+                <td>6.0 cm</td>
+                <td>Correct</td>
+                <td>Excellent</td>
+                <td>98%</td>
+                <td>yes</td>
+                <td>yes</td>
+            </tr>
+
+            <tr>
+                <td>003</td>
+                <td>110 bpm</td>
+                <td>6.0 cm</td>
+                <td>Correct</td>
+                <td>Excellent</td>
+                <td>98%</td>
+                <td>yes</td>
+                <td>yes</td>
+            </tr>
+
+            <tr>
+                <td>003</td>
+                <td>110 bpm</td>
+                <td>6.0 cm</td>
+                <td>Correct</td>
+                <td>Excellent</td>
+                <td>98%</td>
+                <td>yes</td>
+                <td>yes</td>
+            </tr>
+
+            <tr>
+                <td>003</td>
+                <td>110 bpm</td>
+                <td>6.0 cm</td>
+                <td>Correct</td>
+                <td>Excellent</td>
+                <td>98%</td>
+                <td>yes</td>
+                <td>yes</td>
+            </tr>
+
+            <tr>
+                <td>003</td>
+                <td>110 bpm</td>
+                <td>6.0 cm</td>
+                <td>Correct</td>
+                <td>Excellent</td>
+                <td>98%</td>
+                <td>yes</td>
+                <td>yes</td>
+            </tr>
+
+            <tr>
+                <td>003</td>
+                <td>110 bpm</td>
+                <td>6.0 cm</td>
+                <td>Correct</td>
+                <td>Excellent</td>
+                <td>98%</td>
+                <td>yes</td>
+                <td>yes</td>
+            </tr>
+
+            <tr>
+                <td>003</td>
+                <td>110 bpm</td>
+                <td>6.0 cm</td>
+                <td>Correct</td>
+                <td>Excellent</td>
+                <td>98%</td>
+                <td>yes</td>
+                <td>yes</td>
+            </tr>
+
+            <tr>
+                <td>003</td>
+                <td>110 bpm</td>
+                <td>6.0 cm</td>
+                <td>Correct</td>
+                <td>Excellent</td>
+                <td>98%</td>
+                <td>yes</td>
+                <td>yes</td>
+            </tr>
+
+            <tr>
+                <td>003</td>
+                <td>110 bpm</td>
+                <td>6.0 cm</td>
+                <td>Correct</td>
+                <td>Excellent</td>
+                <td>98%</td>
+                <td>yes</td>
+                <td>yes</td>
+            </tr>
+
+            <tr>
+                <td>003</td>
+                <td>110 bpm</td>
+                <td>6.0 cm</td>
+                <td>Correct</td>
+                <td>Excellent</td>
+                <td>98%</td>
+                <td>yes</td>
+                <td>yes</td>
+            </tr>
+
+            <tr>
+                <td>003</td>
+                <td>110 bpm</td>
+                <td>6.0 cm</td>
+                <td>Correct</td>
+                <td>Excellent</td>
+                <td>98%</td>
+                <td>yes</td>
+                <td>yes</td>
+            </tr>
+
+            <tr>
+                <td>003</td>
+                <td>110 bpm</td>
+                <td>6.0 cm</td>
+                <td>Correct</td>
+                <td>Excellent</td>
+                <td>98%</td>
+                <td>yes</td>
+                <td>yes</td>
+            </tr>
+
+            <tr>
+                <td>003</td>
+                <td>110 bpm</td>
+                <td>6.0 cm</td>
+                <td>Correct</td>
+                <td>Excellent</td>
+                <td>98%</td>
+                <td>yes</td>
+                <td>yes</td>
+            </tr>
+
+            <tr>
+                <td>003</td>
+                <td>110 bpm</td>
+                <td>6.0 cm</td>
+                <td>Correct</td>
+                <td>Excellent</td>
+                <td>98%</td>
+                <td>yes</td>
+                <td>yes</td>
+            </tr>
+
+            <tr>
+                <td>003</td>
+                <td>110 bpm</td>
+                <td>6.0 cm</td>
+                <td>Correct</td>
+                <td>Excellent</td>
+                <td>98%</td>
+                <td>yes</td>
+                <td>yes</td>
+            </tr>
+
+            <tr>
+                <td>003</td>
+                <td>110 bpm</td>
+                <td>6.0 cm</td>
+                <td>Correct</td>
+                <td>Excellent</td>
+                <td>98%</td>
+                <td>yes</td>
+                <td>yes</td>
+            </tr>
+
+            <tr>
+                <td>003</td>
+                <td>110 bpm</td>
+                <td>6.0 cm</td>
+                <td>Correct</td>
+                <td>Excellent</td>
+                <td>98%</td>
+                <td>yes</td>
+                <td>yes</td>
+            </tr>
+
+            <tr>
+                <td>003</td>
+                <td>110 bpm</td>
+                <td>6.0 cm</td>
+                <td>Correct</td>
+                <td>Excellent</td>
+                <td>98%</td>
+                <td>yes</td>
+                <td>yes</td>
+            </tr>
+
+            <tr>
+                <td>003</td>
+                <td>110 bpm</td>
+                <td>6.0 cm</td>
+                <td>Correct</td>
+                <td>Excellent</td>
+                <td>98%</td>
+                <td>yes</td>
+                <td>yes</td>
+            </tr>
+
+            <tr>
+                <td>003</td>
+                <td>110 bpm</td>
+                <td>6.0 cm</td>
+                <td>Correct</td>
+                <td>Excellent</td>
+                <td>98%</td>
+                <td>yes</td>
+                <td>yes</td>
+            </tr>
+
+            <tr>
+                <td>003</td>
+                <td>110 bpm</td>
+                <td>6.0 cm</td>
+                <td>Correct</td>
+                <td>Excellent</td>
+                <td>98%</td>
+                <td>yes</td>
+                <td>yes</td>
+            </tr>
+
+            <tr>
+                <td>003</td>
+                <td>110 bpm</td>
+                <td>6.0 cm</td>
+                <td>Correct</td>
+                <td>Excellent</td>
+                <td>98%</td>
+                <td>yes</td>
+                <td>yes</td>
+            </tr>
+
+            <tr>
+                <td>003</td>
+                <td>110 bpm</td>
+                <td>6.0 cm</td>
+                <td>Correct</td>
+                <td>Excellent</td>
+                <td>98%</td>
+                <td>yes</td>
+                <td>yes</td>
             </tr>
         </tbody>
     </table>
 </div>
+
+<!-- JavaScript for search functionality -->
+<script>
+    function searchTable() {
+        // Get search input
+        let input = document.getElementById("searchInput").value.toLowerCase();
+        let table = document.getElementById("myTable");
+        let tr = table.getElementsByTagName("tr");
+    
+        // Loop through all table rows
+        for (let i = 1; i < tr.length; i++) {
+            let row = tr[i];
+            let textContent = row.textContent.toLowerCase();
+            
+            // If row matches the search query, show it. Otherwise, hide it.
+            if (textContent.includes(input)) {
+                row.style.display = "";
+            } else {
+                row.style.display = "none";
+            }
+        }
+    }
+    </script>
 
 
 

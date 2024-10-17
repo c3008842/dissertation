@@ -19,31 +19,33 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 60px;
   background-color: #df5e82;
   color: white;
   display: flex;               /* Use flexbox for alignment */
   align-items: center;         /* Center items vertically */
-  padding: 0 20px;            /* Horizontal padding */
+  padding: 0 10px;           /* Horizontal padding */
   z-index: 1000;
-  
-  height: 120px;
+  height: 140px;
   width: 100%;
+ 
        
   }
 
   /* Styling for the image */
   .header-image {
-    width: 70px;
-    height: 70px; 
+    width: 100px;
+    height: 70px;
+    padding-left: 20px;
     
   }
 
   /* Styling for the heading */
   .header-title {
-    font-size: 24px;
+    font-size: 20px;
     color: white;
-    margin: 0;   
+    margin-left: 20px;
+      
+    
   }
 
   /* SIDEBAR CONTAINER   */
@@ -57,7 +59,7 @@ body {
     left: 0;
     padding-top: 20px;
     transition: width 0.3s ease;
-    margin-top: 120px;
+    margin-top: 140px;
     z-index: 1000; /* Ensure sidebar is on top */
     
   }
@@ -82,7 +84,7 @@ body {
 
   /* Hover effect for links */
   .sidebar a:hover {
-    background-color:rgb(65, 97, 167);
+    background-color:#4c89af;
     color: white;
   }
 
@@ -129,13 +131,13 @@ body {
     justify-content: center;
     align-items: center;
     height: 130%;
-    padding-top: 100px;
-    padding-bottom: 200px;
+    padding-top: 180px;
+    padding-bottom: 150px;
 }
 
 .login-box {
     background-color: #ffffff;
-    padding: 20px;
+    padding: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     width: 100%;
@@ -146,6 +148,7 @@ body {
 h2 {
     text-align: center;
     margin-bottom: 20px;
+    
 }
 
 .input-group {
@@ -179,7 +182,7 @@ input {
 }
 
 .btn-login:hover {
-    background-color: #434190;
+    background-color: #4c89af;;
 }
 
 .login-options {
@@ -196,6 +199,29 @@ input {
 .login-options a:hover {
     text-decoration: underline;
 }
+  /* ----------------*/ 
+  /* CHANGE PASSWORD */
+  /* ---------------- */ 
+
+  .change-container {
+    display: flex;
+    justify-content: center;
+    margin-left: 100px;
+    height: 130%;
+    padding-top: 180px;
+    padding-bottom: 150px;
+}
+
+.change-box {
+    background-color: #ffffff;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 100%;
+    max-width: 500px;
+    
+}
+
 
 /* --------------------*/ 
 /* HEALTH STATUS PAGE */
@@ -205,11 +231,11 @@ input {
   flex-wrap: wrap;
   justify-content: space-evenly;
   margin-left: 200px;
-  margin-top: 130px;
+  margin-top: 150px;
   height: auto; 
   width:auto;
   overflow-y: auto;
- 
+
 }
 
 .machine {
@@ -243,25 +269,25 @@ input {
 /* ----------------*/
 
 .content {
-  margin-left: 100px;
-  padding: 20px;
-  flex-grow: 1;
-  height: 450px;
-  
+  width: auto; /* Full width of the parent container */
+  max-width: 600px; /* Limit width for larger screens */
+  height: 400px; /* Set a specific height for the chart */
+  margin: 140px auto; /* Center the container */
+  position: relative; /* Allows positioning of child elements */
 }
 
-.content, h2 {
-  font-size: 18px;
-  color:#333;
+h2 {
+  font-size: 18px; /* Use rem for responsive font size */
+  color: #333;
   font-weight: 500;
-  padding-left: 40px;
-  padding-top: 80px;
-  
+  padding-left: 2.5%; /* Relative padding */
+  padding-top: 5%; /* Relative padding */
+  margin: 0; /* Reset default margin */
 }
 
 canvas {
-  max-width: 100%; /* Make canvas responsive */
-  height: auto;    /* Maintain aspect ratio */
+  width: 100%; /* Full width of the container */
+  height: auto; /* Maintain aspect ratio */
 }
 
 
@@ -270,41 +296,50 @@ canvas {
 /* BAR GRAPH PAGE */
 /* ------------------- */
 .chart-container {
-  width: 170%;
-  max-width: 1000px;
-  aspect-ratio: 2; /* To keep it responsive */
+  width: 100%; /* Full width relative to the viewport */
+  max-width: 1000px; /* Limits the maximum width */
+  aspect-ratio: 2; /* Keeps the aspect ratio of the container consistent */
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-left: 280px;
-  margin-top: 150px;
+  margin: 20px auto;
+  height: 400px;
+  
 }
 
 .canvas{
   width: 200%;
-  height: 100%;
+  height: auto;
 }
 
+#searchMachine {
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 100%; /* Makes the input field responsive */
+  max-width: 250px; /* Limits maximum size */
+  margin: 20px auto; /* Centers the search bar */
+  display: block; /* Ensures it's centered on the screen */
+  align-items:center;
+  margin-top: 180px;
+
+}
 
 /* --------------------*/ 
 /* ALL SESSION DATA */
 /* ------------------- */
 
 .table-container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
+  width: auto; /* Make the table width relative to the viewport */
   overflow-x: auto; /* Allows scrolling for smaller screens */
-  background-color: #fff;
-  border-radius: 8px;
+  border-radius: 1px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
+  margin-top: 130px;
   margin-left: 200px;
-  margin-top: 100px;
 }
 
 table {
-  width: 100%;
+  width: 100%; /* The table takes up the full width of the container */
   border-collapse: collapse;
   text-align: left;
 }
@@ -323,21 +358,15 @@ td {
   background-color: #f9f9f9;
 }
 
-/* Watch CPR Animation Button */
-.watch-btn {
-  padding: 8px 12px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+#searchInput {
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 100%; /* Makes the input field responsive */
+  max-width: 350px; /* Limits maximum size */
+  margin: 20px auto; /* Centers the search bar */
+  display: block; /* Ensures it's centered on the screen */
+
 }
-
-.watch-btn:hover {
-  background-color: #45a049;
-}
-
-
 
 /* --------------------*/ 
 /* RESET PASSWORD PAGE */
@@ -359,7 +388,7 @@ td {
   width: 100%;
   max-width: 700px;
   padding-top: 40px;
-  margin-top: 150px;
+  margin-top: 190px;
 }
 
 h2 {
@@ -381,7 +410,7 @@ p {
 }
 
 .btn-ok:hover {
-  background-color: #434190;
+  background-color: #4c89af;
 }
 
 .btn-ok1 {
@@ -396,7 +425,7 @@ p {
 }
 
 .btn-ok1:hover {
-  background-color: #434190;
+  background-color: #4c89af;
 }
 
   /* Responsive Design for header */
@@ -405,7 +434,7 @@ p {
   @media (min-width: 768px) {
    
     .header {
-      padding: 30px;
+      padding: 20px;
       
     }
 
@@ -445,7 +474,6 @@ p {
     .header {
       flex-direction: column;
       align-items: center;
-     
     
       
     }
@@ -502,12 +530,14 @@ p {
     .login-box {
         padding: 15px;
         width: 90%;
+        
     }
 
     .btn-login {
         padding: 8px;
         font-size: 14px;
     }
+
 
     .reset-box {
       padding: 15px;
@@ -584,18 +614,144 @@ p {
       
   }
 
+
+  .table-container {
+    width: auto;
+    margin: 0 auto;
+    overflow-x: auto;
+    border-radius: 2px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 2px;
+    margin-left: 90px;
+    margin-top: 120px;
+    
+  }
+  
+  table {
+    width: auto;
+    text-align: left;
+    font-size: 10px;
+  }
+  
   th, td {
-    padding: 8px;
-    font-size: 14px;
+    padding: 1px;
+    border-bottom: 1px solid #ddd;
+    font-size: 8px;
+  }
+  
+  th {
+    background-color: #4c89af;
+    color: white;
+    font-size: 8px;
+  }
+  
+  td {
+    background-color: #f9f9f9;
+    font-size: 8px;
+  }
+
+  #searchInput {
+    margin-bottom: 10px;
+    width: auto;
+    margin-left: 100px;
+    margin-top: 20px;
+    align-content: center;
+    font-size: 8px;
+  }
+
+  .chart-container {
+    width: 75%;
+    max-width: 1000px;
+    aspect-ratio: 2; /* To keep it responsive */
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-left: 100px;
+    height: 400px;
+  }
+
+
+  #searchMachine {
+    margin-bottom: 10px;
+    padding: 5px;
+    width: 90%; /* Makes the input field responsive */
+    max-width: 200px; /* Limits maximum size */
+    margin: 10px auto; /* Centers the search bar */
+    display: block; /* Ensures it's centered on the screen */
+    align-items: center;
+    margin-top: 180px;
+    margin-left: 150px;
+  
+  }
+  
+  .change-container {
+    width:60%;
+    height:60%;
+    margin-left: 120px;
+    
+}
+  
 }
 
-.watch-btn {
-    padding: 6px 10px;
+@media screen and (min-width: 769px) and (max-width: 1300px) {
+
+  .chart-container {
+    width: 75%;
+    max-width: 1000px;
+    aspect-ratio: 2; /* To keep it responsive */
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-left: 185px;
+    height: 400px;
+  }
+
+
+  #searchMachine {
+    margin-bottom: 10px;
+    padding: 5px;
+    width: 90%; /* Makes the input field responsive */
+    max-width: 200px; /* Limits maximum size */
+    margin: 10px auto; /* Centers the search bar */
+    display: block; /* Ensures it's centered on the screen */
+    align-items: center;
+    margin-top: 180px;
+    margin-left: 220px;
+  
+  }
+
+  .change-container {
+    width:60%;
+    height:60%;
+    margin-left: 280px;
+    
+}
+  
+}
+
+@media (max-width: 1024px) {
+  .content{
+  width: auto; /* Full width of the parent container */
+  height: 200px; /* Set a specific height for the chart */
+  margin: 130px auto; /* Center the container */
+  padding-left: 70px;
+
+  }
+
+  h2{
+    font-size: 15px;
+    margin-left: 20px;
+  }
 }
 
   
+
   
-}
+  
+  
+
+
+
 
 
 
