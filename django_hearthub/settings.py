@@ -12,7 +12,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 import os
 from pathlib import Path
-from pathlib import Path
+from dotenv import load_dotenv
+load_dotenv()
 
 
 
@@ -24,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-4e=b#bo(ajwcjyei7xk-oau$3qgdbk%-=@o2q6&+)4$q)pp-e1'
+SECRET_KEY = os.environ['AZURE_SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -80,12 +81,12 @@ WSGI_APPLICATION = 'django_hearthub.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'hearthub',  # Database name from phpMyAdmin
-        'USER': 'root',       # MySQL username (root by default)
-        'PASSWORD': 'Kavya@12345',   # MySQL password (empty by default)
-        'HOST': 'localhost',           # Database host (localhost for local development)
-        'PORT': '3306',                # MySQL port (3306 by default)
+        'ENGINE': os.environ['AZURE_SA_ENGINE'],
+        'NAME': os.environ['AZURE_SA_NAME'],
+        'USER': os.environ['AZURE_SA_USER'],
+        'PASSWORD': os.environ['AZURE_SA_PASSWORD'],
+        'HOST': os.environ['AZURE_SA_HOST'],
+        'PORT': os.environ['AZURE_SA_PORT']
     }
 }
 
@@ -130,3 +131,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIRECT_URL = 'home'
