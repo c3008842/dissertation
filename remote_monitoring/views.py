@@ -1,18 +1,20 @@
+from django.core.mail import EmailMessage
+from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.contrib import messages
 from .forms import RegisterForm
-
-
+import requests
+from django.conf import settings
 # Create your views here.
 
 def home(request):
-    return render(request, 'home.html')
+    return render(request, 'registration/home.html')
 
 def login(request):
-    return render(request, 'login.html')
+    return render(request, 'registration/login.html')
 
 def registrationPage(request):
     if request.method == 'POST':
@@ -33,41 +35,48 @@ def registrationPage(request):
     else:
         form = RegisterForm()
 
-    return render(request, 'registrationPage.html', {'form': form})
+    return render(request, 'registration/registrationPage.html', {'form': form})
   
 
 def base(request):
-    return render(request, 'base.html')
+    return render(request, 'registration/base.html')
 
-def resetPage(request):
-    return render(request, 'resetPage.html')
+# def resetPage(request):
+#     return render(request, 'resetPage.html')
 
-def resetPasswordLink(request):
-    return render(request, 'resetPasswordMessage.html')
+# def resetPasswordLink(request):
+#     return render(request, 'resetPasswordMessage.html')
 
-def resetPasswordPage(request):
-    return render(request, 'resetPasswordPage.html')
+# def resetPasswordPage(request):
+#     return render(request, 'resetPasswordPage.html')
 
-def resetPasswordSuccessMessage(request):
-    return render(request, 'resetPasswordSuccessMessage.html')
+# def resetPasswordSuccessMessage(request):
+#     return render(request, 'resetPasswordSuccessMessage.html')
 
 def userEngagementMetrics(request):
-    return render(request, 'userEngagementMetrics.html')
+    return render(request, 'registration/userEngagementMetrics.html')
 
 def healthStatus(request):
-    return render(request, 'health_dashboard.html')
+    return render(request, 'registration/health_dashboard.html')
 
 def overallMetrics(request):
-    return render(request, 'overall_metrics.html')
+    return render(request, 'registration/overall_metrics.html')
 
 
 def allSessionData(request):
-    return render(request, 'allSessionData.html')
+    return render(request, 'registration/allSessionData.html')
 
 
 def changePassword(request):
-    return render(request, 'changePassword.html')
+    return render(request, 'registration/changePassword.html')
 
 
 def addEmail(request):
-    return render(request, 'addEmail.html')
+    return render(request, 'registration/addEmail.html')
+
+
+
+
+
+
+

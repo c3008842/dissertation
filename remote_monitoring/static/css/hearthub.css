@@ -145,7 +145,7 @@ body {
     
 }
 
-#id_username_helptext, #id_password2_helptext{
+#id_username_helptext, #id_password2_helptext, #id_new_password2_helptext{
   color:#aba9a9;
 
 }
@@ -455,7 +455,7 @@ p {
   border-radius: 4px;
   font-size: 16px;
   cursor: pointer;
-  margin-left: 130px;
+  margin-left: 230px;
 }
 
 .btn-ok1:hover {
@@ -730,7 +730,7 @@ p {
 .btn-ok1 {
   padding: 5px 10px;
   font-size: 14px;
-  margin-left: 60px;
+  margin-left: 100px;
 }
   
 }
@@ -772,7 +772,7 @@ p {
 .btn-ok1 {
   padding: 10px 15px;
   font-size: 14px;
-  margin-left: 140px;
+  margin-left: 210px;
 }
   
 }

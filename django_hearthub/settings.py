@@ -133,3 +133,11 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = 'home'
+
+EMAIL_BACKEND = os.environ['EMAIL_SERVER']
+EMAIL_HOST = os.environ['EMAIL_HOST']
+EMAIL_PORT = os.environ['EMAIL_PORT']
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.environ['EMAIL_ADDRESS'] 
+EMAIL_HOST_PASSWORD = os.environ['EMAIL_KEY']   
+DEFAULT_FROM_EMAIL = os.environ['EMAIL_ADDRESS']

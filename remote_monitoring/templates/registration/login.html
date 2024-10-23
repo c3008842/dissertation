@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'registration/base.html' %}
 {% load static %}
 {% block content %}           
 
@@ -16,7 +16,7 @@
             <button type="submit" class="btn-login">Login</button>
         </form>
         <div class="login-options">
-            <a href="{% url 'reset/email' %}">Forgot Password?</a>
+            <a href="{% url 'password_reset' %}">Forgot Password?</a>
             <a href=http://127.0.0.1:8000/admin>Register New User</a>
         </div>
     </div>
