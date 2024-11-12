@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'remote_monitoring',
+    'background_task',
+    
 ]
 
 MIDDLEWARE = [
@@ -141,3 +143,6 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ['EMAIL_ADDRESS'] 
 EMAIL_HOST_PASSWORD = os.environ['EMAIL_KEY']   
 DEFAULT_FROM_EMAIL = os.environ['EMAIL_ADDRESS']
+
+
+

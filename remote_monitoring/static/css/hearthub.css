@@ -48,6 +48,8 @@ body {
     
   }
 
+ 
+
   /* ---------------*/
   /* Sidebar links */
   /* --------------*/
@@ -268,9 +270,11 @@ input {
   margin-top: 150px;
   height: auto; 
   width:auto;
-  overflow-y: auto;
+  overflow-y: auto;  
 
 }
+
+
 
 .machine {
   display: flex;
@@ -310,6 +314,16 @@ input {
   position: relative; /* Allows positioning of child elements */
 }
 
+.content1{
+
+  width: auto; /* Full width of the parent container */
+  max-width: 800px; /* Limit width for larger screens */
+  height: 600px; /* Set a specific height for the chart */
+  margin: 200px 500px; /* Center the container */
+  position: relative;
+
+}
+
 h2 {
   font-size: 18px; /* Use rem for responsive font size */
   color: #333;
@@ -322,8 +336,14 @@ h2 {
 canvas {
   width: 100%; /* Full width of the container */
   height: auto; /* Maintain aspect ratio */
+  
+  
 }
 
+a{
+  text-decoration: underline;
+  font-weight: 500;
+}
 
 
 /* --------------------*/ 
@@ -344,17 +364,19 @@ canvas {
 .canvas{
   width: 200%;
   height: auto;
+  
 }
 
 #searchMachine {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   padding: 5px;
   width: 100%; /* Makes the input field responsive */
   max-width: 250px; /* Limits maximum size */
-  margin: 20px auto; /* Centers the search bar */
+  margin: 20px 260px; /* Centers the search bar */
   display: block; /* Ensures it's centered on the screen */
   align-items:center;
   margin-top: 180px;
+  font-size: 15px;
 
 }
 
@@ -363,19 +385,21 @@ canvas {
 /* ------------------- */
 
 .table-container {
-  width: auto; /* Make the table width relative to the viewport */
+  width:auto; /* Make the table width relative to the viewport */
   overflow-x: auto; /* Allows scrolling for smaller screens */
   border-radius: 1px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
   margin-top: 130px;
   margin-left: 200px;
+  
 }
 
 table {
   width: 100%; /* The table takes up the full width of the container */
   border-collapse: collapse;
   text-align: left;
+  
 }
 
 th, td {
@@ -397,8 +421,9 @@ td {
   padding: 5px;
   width: 100%; /* Makes the input field responsive */
   max-width: 350px; /* Limits maximum size */
-  margin: 20px auto; /* Centers the search bar */
+  margin: 20px 0px ; /* Centers the search bar */
   display: block; /* Ensures it's centered on the screen */
+  font-size: 15px;
 
 }
 
@@ -654,46 +679,51 @@ p {
 
   .table-container {
     width: auto;
-    margin: 0 auto;
     overflow-x: auto;
-    border-radius: 2px;
+    border-radius: 1px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 2px;
-    margin-left: 90px;
-    margin-top: 120px;
-    
+    padding: 1.5px;
+    margin-left: 100px;
+    margin-top: 150px;
+   
+ 
   }
   
   table {
-    width: auto;
+    width:auto;
     text-align: left;
     font-size: 10px;
+   
+    
   }
   
   th, td {
-    padding: 1px;
+    padding: 2px;
     border-bottom: 1px solid #ddd;
-    font-size: 8px;
+ 
+    
   }
   
   th {
     background-color: #4c89af;
     color: white;
-    font-size: 8px;
+    font-size: 12px;
+    font-weight: 550;
   }
   
   td {
     background-color: #f9f9f9;
-    font-size: 8px;
+    font-size: 12px;
+    font-weight: 550;
   }
 
   #searchInput {
     margin-bottom: 10px;
     width: auto;
-    margin-left: 100px;
+    margin-left: 0px;
     margin-top: 20px;
     align-content: center;
-    font-size: 8px;
+    font-size: 10px;
   }
 
   .chart-container {
@@ -713,11 +743,12 @@ p {
     padding: 5px;
     width: 90%; /* Makes the input field responsive */
     max-width: 200px; /* Limits maximum size */
-    margin: 10px auto; /* Centers the search bar */
+    margin: 10px 0px; /* Centers the search bar */
     display: block; /* Ensures it's centered on the screen */
     align-items: center;
     margin-top: 180px;
-    margin-left: 150px;
+    margin-left: 120px;
+    font-size: 15px;
   
   }
   
@@ -744,8 +775,9 @@ p {
     padding: 20px;
     border-radius: 4px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-left: 185px;
+    margin-left: 200px;
     height: 400px;
+    font-size: 20px;
   }
 
 
@@ -753,12 +785,13 @@ p {
     margin-bottom: 10px;
     padding: 5px;
     width: 90%; /* Makes the input field responsive */
-    max-width: 200px; /* Limits maximum size */
-    margin: 10px auto; /* Centers the search bar */
+    max-width: 250px; /* Limits maximum size */
+    margin: 10px 0px; /* Centers the search bar */
     display: block; /* Ensures it's centered on the screen */
     align-items: center;
     margin-top: 180px;
     margin-left: 220px;
+    font-size: 15px;
   
   }
 
@@ -786,14 +819,20 @@ p {
 
   }
 
+  .content1{
+
+    width: auto; /* Full width of the parent container */
+    margin: 140px auto; /* Center the container */
+    padding-left: 70px;
+  
+  }
+
   h2{
     font-size: 15px;
     margin-left: 20px;
   }
 
-  .sidebar {
-    width: 90px;
-  }
+  
 }
 
   

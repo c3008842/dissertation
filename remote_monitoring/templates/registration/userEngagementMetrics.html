@@ -3,57 +3,87 @@
 
 {% block graph %} 
 
+{% if messages %}
+<main class="content1">
 
-<select id="searchMachine" onchange="filterTable()">
+<h2>{{messages}}</h2>
+</main>
+
+
+{% else %}
+
+<select name="  " id="searchMachine" onchange="redirectToMetrics(this.value)">
+
     <option value="">Select a machine</option>
-    <option value="Machine 1">Machine 1</option>
-    <option value="Machine 2">Machine 2</option>
-    <option value="Machine 3">Machine 3</option>
-    <option value="Machine 4">Machine 4</option>
+    {% for machine in machines %}
+        <option value="{{ machine.id }}" 
+            {% if machine.id == default_machine_id %}selected{% endif %}> <!-- Set selected if machine_id matches -->
+            {{ machine }}
+        </option>
+    {% endfor %}
 </select>
 
-<div class="chart-container">
-   
 
+<script>
+    function redirectToMetrics(machineId) {
+        if (machineId) {
+            // Redirect to the 'user/engagement/metrics' URL with the selected machine ID
+            window.location.href = `{% url 'user/engagement/metrics' %}?machine_id=${machineId}`;
+        }
+    }
+</script>
+
+
+
+<div class="chart-container">
     <canvas id="myBarChart"></canvas>
 </div>
 
-
-
-
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
+
+     // Parse session count JSON data from Django
+     const machineName = JSON.parse('{{ machine_name|safe }}');
+     const sessionCount = JSON.parse('{{ session_counts|safe }}');
+    
+
     // Bar chart configuration with Machines on X-axis and Metrics as bars
     const ctx = document.getElementById('myBarChart').getContext('2d');
     const myBarChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['Machine 1'], // Machines on the X-axis
+            labels: [machineName], // Machines on the X-axis
             datasets: [
                 {
                     label: 'Footfall',
-                    data: [30], // Example data for Footfall
+                    data: [sessionCount.footfall_count], // Example data for Footfall
                     backgroundColor: '#FF9999' // Mild pink for Footfall
                 },
                 {
                     label: 'Loitering',
-                    data: [20], // Example data for Loitering
+                    data: [sessionCount.loitering_count], // Example data for Loitering
                     backgroundColor: '#FFCC99' // Mild orange for Loitering
                 },
                 {
-                    label: 'Partial Sessions',
-                    data: [25], // Example data for Partial Sessions
+                    label: 'Partial Engaged',
+                    data: [sessionCount.partially_engaged], // Example data for Partial Sessions
                     backgroundColor: '#FFFF99' // Mild yellow for Partial Sessions
                 },
                 {
-                    label: 'Full Sessions',
-                    data: [35], // Example data for Full Sessions
+                    label: 'Full Engaged',
+                    data: [sessionCount.fully_engaged], // Example data for Full Sessions
                     backgroundColor: '#99CC99' // Mild green for Full Sessions
                 },
                 {
-                    label: 'Engaged Sessions',
-                    data: [40], // Example data for Engaged Sessions
+                    label: 'Engaged with Survey',
+                    data: [sessionCount.fully_engaged_with_survey], // Example data for Engaged Sessions
                     backgroundColor: '#99CCFF' // Mild blue for Engaged Sessions
+                },
+
+                {
+                    label: 'Repeated Session',
+                    data: [sessionCount.repeated_sessions], // Example data for Engaged Sessions
+                    backgroundColor: '#D4A6FF'// Mild violet for Engaged Sessions
                 }
             ]
         },
@@ -62,13 +92,30 @@
             maintainAspectRatio: false, // Allow chart to adjust with the container
             scales: {
                 y: {
-                    beginAtZero: true // Ensure Y-axis starts at 0
+                    beginAtZero: true, // Ensure Y-axis starts at 0
+                    
                 }
             },
-            plugins: {
+
+            scales: {
+            x: {
+                ticks: {
+                    font: {
+                        size: 15  // Increase font size for X-axis labels
+                    }
+                }
+            }
+        },
+
+      plugins: {
                 legend: {
                     display: true,
-                    position: 'top' // Position legend at the top
+                    position: 'top', // Position legend at the top
+                    labels: {
+                    font: {
+                        size: 15  // Increase legend label font size
+                    }
+                }
                 },
                 tooltip: {
                     enabled: true // Enable tooltips for hover effects
@@ -77,5 +124,7 @@
         }
     });
 </script>
+
+{% endif %}
 
 {% endblock %} 

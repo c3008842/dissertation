@@ -7,10 +7,9 @@
   <div class="sidebar">
   <a href="{% url 'home' %}" class="sidebar-link" id="health-link">Dashboard</a>
   <a href="{% url 'overall/metrics' %}" class="sidebar-link" id="user-data-link">Overall Metrics</a>
-  <a href="{% url 'user/engagement/metrics' %}" class="sidebar-link" id="user-metrics">User Engagement Metrics</a>
+  <a href="{% url 'user/engagement/metrics' %}" class="sidebar-link {% if request.resolver_match.url_name == 'user/engagement/metrics' %}active{% endif %}" id="user-metrics">User Engagement Metrics</a>
   <a href="{% url 'session/data' %}" class="sidebar-link" id="session-data">All Session Data</a>
-  <a href="{% url 'change/password' %}" class="sidebar-link" id="change-password-link">Change Password</a>
-  <a href="{% url 'add/email' %}" class="sidebar-link" id="add-email">Add Email</a>
+  <a href="{% url 'add/email' %}" class="sidebar-link" id="add-email">Change Password</a>
   <a href="{% url 'login' %}">Logout</a>
   </div>
 
@@ -19,18 +18,24 @@
     // Get all sidebar links
     const sidebarLinks = document.querySelectorAll('.sidebar-link');
 
-    // Check for an existing active link in local storage (optional persistence)
-    const activeLinkId = localStorage.getItem('activeLinkId');
+    // Function to apply the initial active class based on Django's server-side rendering
+    function setInitialActiveClass() {
+        const activeLinkId = localStorage.getItem('activeLinkId');
 
-    // Set the active link based on local storage if available
-    if (activeLinkId) {
-        document.getElementById(activeLinkId).classList.add('active');
-    } else {
-        // Set the default active link (e.g., first link)
-        sidebarLinks[0].classList.add('active');
+        // Check if there's an active link set by Django
+        const djangoActiveLink = Array.from(sidebarLinks).find(link => link.classList.contains('active'));
+        
+        // If no active link is present from Django but local storage has one, apply it
+        if (!djangoActiveLink && activeLinkId) {
+            const storedLink = document.getElementById(activeLinkId);
+            if (storedLink) storedLink.classList.add('active');
+        }
     }
 
-    // Function to handle click events
+    // Initial setup: Apply active class from Django or local storage
+    setInitialActiveClass();
+
+    // Add click event listeners to each sidebar link
     sidebarLinks.forEach(link => {
         link.addEventListener('click', function () {
             // Remove the 'active' class from all links
@@ -39,11 +44,12 @@
             // Add the 'active' class to the clicked link
             this.classList.add('active');
 
-            // Optionally save the active link to local storage
+            // Update the active link ID in local storage
             localStorage.setItem('activeLinkId', this.id);
         });
     });
 </script>
+
 
 
   {% block health %} 

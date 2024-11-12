@@ -4,36 +4,25 @@
 {% block health %}
 
 <div class="machine-container" id="machine-container">
-        <!-- Example for existing machines -->
-        <div class="machine" data-status="healthy">
-            <div class="status-circle"></div>
-            <span>HeartHub Machine 1</span>
-        </div>
+{% if messages %}
+     
+      <h2>{{messages}}</h2>  
+     
 
-        <div class="machine" data-status="unhealthy">
-            <div class="status-circle"></div>
-            <span>HeartHub Machine 2</span>
-        </div>
 
-        <div class="machine" data-status="healthy">
-            <div class="status-circle"></div>
-            <span>HeartHub Machine 3</span>
-        </div>
+    {% else %}
 
-        <div class="machine" data-status="healthy">
-            <div class="status-circle"></div>
-            <span>HeartHub Machine 4</span>
-        </div>
+        {% for machine in data %}
+            <!-- Example for existing machines -->
+            <div class="machine" data-status='{{ machine.status }}'>
+                 <div class="status-circle"></div>
+                 <span>{{machine.machine_name}}</span>
+    
+            </div>
+        {% endfor %}  
 
-        <div class="machine" data-status="healthy">
-            <div class="status-circle"></div>
-            <span>HeartHub Machine 5</span>
-        </div>
+    {% endif %}  
 
-        <div class="machine" data-status="healthy">
-            <div class="status-circle"></div>
-            <span>HeartHub Machine 6</span>
-        </div>
         </div>
 
     <script src="{% static 'js/health.js' %}"></script>

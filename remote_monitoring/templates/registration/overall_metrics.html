@@ -3,28 +3,45 @@
 
 {% block overall_metrics %} 
 
+
+
 <!-- User overall engagement metrics -->
 <main class="content">
-    <h2>This is overall engagement metrics for all the hearthub machines, if you want to view individual machine metrics User Engagement Metrics</h2>
+    {% if messages %}
+  
+   <h2>{{messages}}</h2> 
+
+   {% else %}  
+
+    <h2>This is overall engagement metrics for all the hearthub machines, if you want to view individual machine metrics 
+        <a href="{% url 'user/engagement/metrics' %}" style="text-decoration: underline;">Click Here</a>
+    </h2>
     <canvas id="myPieChart"></canvas> <!-- Canvas for pie chart -->
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
 <script>
+    
+   // Pass session_labels and session_counts from Django to JavaScript
+   const sessionCounts = JSON.parse('{{ session_counts|safe }}');
+
     // Pie chart configuration
     const ctx = document.getElementById('myPieChart').getContext('2d');
     const myPieChart = new Chart(ctx, {
         type: 'pie',
         data: {
-            labels: ['Footfall', 'Loitering', 'Partial Session', 'Full Session', 'Engaged'],
+            labels: ['Footfall', 'Loitering', 'Partial Engaged', 'Full Engaged', 'Fully Engaged with Survey', 'Repeated Session'],
             datasets: [{
-                data: [15, 15, 20, 30, 10], // Example data values for each category
+                data: sessionCounts, // Example data values for each category
                 backgroundColor: [
                    '#FF9999', // Richer pink for Footfall
                    '#FFCC99', // Richer orange for Loitering
                    '#FFFF99', // Richer yellow for Partial Session
                    '#99CC99', // Richer green for Full Session
-                   '#99CCFF' 
+                   '#99CCFF',
+                   '#D4A6FF'
                 ],
                 hoverOffset: 4 // Hover effect
             }]
@@ -48,11 +65,18 @@
                     legend: {
                         display: true,
                         position: 'bottom', // Position legend at the bottom
+                        labels: {
+                    font: {
+                        size: 15  // Increase legend label font size
+                    }
+                }
                     }
                 }
             }
     });
 </script>
+
+{% endif %}
 
 
 
