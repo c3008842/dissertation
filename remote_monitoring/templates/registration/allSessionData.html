@@ -4,14 +4,17 @@
 {% block session %} 
 
 
-<div class="table-container">
+<div class="table-container">    
 
 {% if messages %}
 <h2>{{messages}}</h2>
        
  {% else %}
-
-    <select id="searchInput" onchange="redirectToMetrics(this.value)">
+ <form method="get" action="">
+ <div class="select-button-container">
+    
+    <select id="searchInput" name="machine_id" onchange="this.form.submit()">
+        
         {% for machine in machines %}
         <option value="{{ machine.id }}" 
             {% if machine.id == default_machine_id %}selected{% endif %}> <!-- Set selected if machine_id matches -->
@@ -19,17 +22,23 @@
         </option>
     {% endfor %}
     </select>
+    <button id="downloadButton" class="download-button" name="download" value="true" type="submit">Download Reports Here</button>
 
-    <script>
-        function redirectToMetrics(machineId) {
-            if (machineId) {
-                // Redirect to the 'user/engagement/metrics' URL with the selected machine ID
-                window.location.href = `{% url 'session/data' %}?machine_id=${machineId}`;
-            }
-        }
-    </script>
+    </div>
+</form>
 
-    
+<script>
+    document.getElementById("searchInput").addEventListener("change", function () {
+        const machineId = this.value; // Get selected machine_id
+        const downloadButton = document.getElementById("downloadButton");
+        
+        // Append the machine_id to the form's action dynamically
+        const form = downloadButton.closest("form");
+        const baseUrl = window.location.href.split("?")[0]; // Base URL
+        form.action = `${baseUrl}?machine_id=${machineId}`;
+    });
+</script>
+
     <table>
         <thead>
             <tr>
@@ -62,11 +71,26 @@
             </tr>
             {% endfor %}
 
-
-            
-           
         </tbody>
     </table>
+
+    <div class="pagination-controls">
+        <span class="step-links">
+            {% if sessionData.has_previous %}
+                <a href="?page=1&machine_id={{ default_machine_id }}">&laquo; First</a>
+                <a href="?page={{ sessionData.previous_page_number }}&machine_id={{ default_machine_id }}">Previous</a>
+            {% endif %}
+    
+            <span class="current">
+                Page {{ sessionData.number }} of {{ sessionData.paginator.num_pages }}
+            </span>
+    
+            {% if sessionData.has_next %}
+                <a href="?page={{ sessionData.next_page_number }}&machine_id={{ default_machine_id }}">Next</a>
+                <a href="?page={{ sessionData.paginator.num_pages }}&machine_id={{ default_machine_id }}">Last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
 </div>
 
 <!-- JavaScript for search functionality -->

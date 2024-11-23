@@ -1,3 +1,4 @@
+import csv
 import json
 from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponse
@@ -7,6 +8,9 @@ from django.contrib import messages
 from .forms import RegisterForm
 from .models import Machine, UserMetrics, Email, Session, Survey
 from django.db.models import Count, Q
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
+
 
 
 # Create your views here.
@@ -115,33 +119,86 @@ def retrieveMachineData(request):
 
 
 #This function fetches per session detail of each machine and display it on frontend
-from django.shortcuts import render
-from .models import Machine, UserMetrics, Survey
+
 
 def allSessionData(request):
     try:
-        # Attempt to fetch the first machine as a default
-        default_machine = Machine.objects.first()
-        if not default_machine:
-            raise ValueError("No machine data found in the database.")
 
-        # Retrieve the machine_id from the GET parameters or use the default machine ID
-        machine_id = request.GET.get('machine_id', default_machine.id)
+        # Attempt to fetch the first machine as a default
+        machine_id = request.GET.get('machine_id')
+        if not machine_id:
+            default_machine = Machine.objects.first()
+            if not default_machine:
+                raise ValueError("No machine data found in the database.")
+            machine_id = default_machine.id
         
         # Retrieve UserMetrics related to the specified machine_id
         sessionData = UserMetrics.objects.filter(machine_id=machine_id).select_related('survey')
+         # Retrieve UserMetrics related to the specified machine_id
+        sessionData = UserMetrics.objects.filter(machine_id=machine_id).select_related('survey')
+
+        # Pagination setup
+        page = request.GET.get('page', 1)  # Get the current page number from the request
+        paginator = Paginator(sessionData, 10)  # Show 10 items per page
+
+        try:
+            paginated_data = paginator.page(page)
+        except PageNotAnInteger:
+            # If page is not an integer, deliver the first page
+            paginated_data = paginator.page(1)
+        except EmptyPage:
+            # If the page is out of range, deliver the last page of results
+            paginated_data = paginator.page(paginator.num_pages)
+        
+
+        if request.GET.get('download') == 'true' :
+            
+            # Create a response with a CSV file attachment
+            response = HttpResponse(content_type='text/csv')
+            response['Content-Disposition'] = f'attachment; filename="Machine_{machine_id}.csv"'
+            machine_name = Machine.objects.get(id=machine_id)
+
+            # Write data to the CSV file
+            writer = csv.writer(response)
+            writer.writerow([f'Machine Name: {machine_name.machine_name}'])  # Add machine name as a header
+            # Write headers (customize based on your model fields)
+            writer.writerow(['Time Engaged', 'Distance While Active','Hand Position','CPR Rate','Compression',
+                             'Recoil',
+                             'Watched Animation',
+                             'Sessions played',
+                             'Survey Q1',
+                             'Survey Q2'
+                             ])
+            
+            for session in sessionData:
+                writer.writerow([
+                    session.time_engaged,
+                    session.distance_while_active,
+                    session.hand_position,
+                    session.rate,
+                    session.compression,
+                    session.recoil,
+                    session.watched_animation,
+                    session.sessions_played,
+                    session.survey.question_1_response,
+                    session.survey.question_2_response
+                    
+                ])
+            return response
+        
         messages = None
+        
 
     except Exception as e:
         # Handle any errors gracefully
-        sessionData = None
+        paginated_data = None
         messages = f'Something went wrong: {str(e)}'
 
     return render(request, 'registration/allSessionData.html', {
         'default_machine_id': int(machine_id),
         'messages': messages,
         'machines': Machine.objects.all(),  # Repopulate the machine dropdown
-        'sessionData': sessionData  # Pass sessionData to the template
+        'sessionData': paginated_data  # Pass sessionData to the template
     })
 
 
@@ -182,8 +239,8 @@ def changePassword(request):
     return render(request, 'registration/changePassword.html')
 
 
-def addEmail(request):
-    return render(request, 'registration/addEmail.html')
+def changePassword(request):
+    return render(request, 'registration/changePassword.html')
 
 
 
