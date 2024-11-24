@@ -9,17 +9,23 @@ from .forms import RegisterForm
 from .models import Machine, UserMetrics, Email, Session, Survey
 from django.db.models import Count, Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
 
 
 
 
 # Create your views here.
-
+@login_required
 def home(request):
     return render(request, 'registration/home.html')
 
 def login(request):
     return render(request, 'registration/login.html')
+@login_required
+def logout_view(request):
+    logout(request)  # Logs out the user
+    return redirect('login')
 
 #Registration Page is not requried as owner will take care of registrations from django admin dashboard
 # def registrationPage(request):
@@ -57,7 +63,7 @@ def base(request):
 #         messages = f'Something went wrong: {str(e)}' # Display error message on homepage
     
 #     return render(request, 'registration/userEngagementMetrics.html', {'machines':machines,'messages': messages })
-
+@login_required
 def retrieveMachineData(request):
 
  try:
@@ -120,7 +126,7 @@ def retrieveMachineData(request):
 
 #This function fetches per session detail of each machine and display it on frontend
 
-
+@login_required
 def allSessionData(request):
     try:
 
@@ -202,7 +208,7 @@ def allSessionData(request):
     })
 
 
-
+@login_required
 #This function checks health status of all the machines present in database
 def healthStatus(request):
     try:
@@ -214,6 +220,7 @@ def healthStatus(request):
     return render(request, 'registration/health_dashboard.html',{'data':data,'messages': messages })
 
 
+@login_required
 #This function fetches session status and it's count from database and display it on overall_metrics pi chart
 def overallMetrics(request):
     try: 
@@ -234,13 +241,10 @@ def overallMetrics(request):
         'messages':messages
     })
 
-
+@login_required
 def changePassword(request):
     return render(request, 'registration/changePassword.html')
 
-
-def changePassword(request):
-    return render(request, 'registration/changePassword.html')
 
 
 

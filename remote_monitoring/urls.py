@@ -9,8 +9,10 @@ from django.contrib.auth.views import PasswordChangeView,PasswordChangeDoneView
 urlpatterns = [
     path('home', views.home, name="home"),
     path('login/', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
+    path('logout/', views.logout_view, name='logout'),
+   
     path('base', views.base, name="base"),
-    # path('registration', views.registrationPage, name="registration"),
+    
 
     path('password_reset/', auth_views.PasswordResetView.as_view(template_name='registration/password_reset.html'), name='password_reset'),
     path('password_reset_done/', auth_views.PasswordResetDoneView.as_view(template_name='registration/password_reset_done1.html'), name='password_reset_done'),

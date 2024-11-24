@@ -4,6 +4,7 @@
 {% block health %}
 
 <div class="machine-container" id="machine-container">
+    {{ redirect_to_login_immediately }}
 {% if messages %}
      
       <h2>{{messages}}</h2>  
