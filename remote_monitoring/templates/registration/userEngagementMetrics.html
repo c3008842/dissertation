@@ -14,8 +14,6 @@
 {% else %}
 
 <select name="  " id="searchMachine" onchange="redirectToMetrics(this.value)">
-
-    <option value="">Select a machine</option>
     {% for machine in machines %}
         <option value="{{ machine.id }}" 
             {% if machine.id == default_machine_id %}selected{% endif %}> <!-- Set selected if machine_id matches -->

@@ -141,7 +141,7 @@ LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'login'
 
 
-AUTO_LOGOUT = {'IDLE_TIME': 10,  
+AUTO_LOGOUT = {'IDLE_TIME': 600,  #Idle screen set to 10 minutes
                'REDIRECT_TO_LOGIN_IMMEDIATELY': True,
                'MESSAGE': 'The session has expired. Please login again to continue.',}  # logout after 10 seconds of downtime
 
