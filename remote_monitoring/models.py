@@ -42,7 +42,7 @@ class Session(models.Model):
  #survey table
 class Survey(models.Model):
 
-    question_1_response = models.BooleanField(null=True, blank=False, default='N/A') # Response for the first static question
+    question_1_response = models.BooleanField(null=True, blank=False, default= 'N/A') # Response for the first static question
     question_2_response = models.BooleanField(null=True, blank=False,default='N/A')  # Response for the second static question
    
 
@@ -59,9 +59,9 @@ class Survey(models.Model):
 
 # Metrics Table
 class UserMetrics(models.Model):
- machine = models.ForeignKey(Machine, on_delete=models.CASCADE, related_name='machine', default=1)
- session = models.ForeignKey(Session, on_delete=models.CASCADE, related_name='session', default=12)
- survey = models.ForeignKey(Survey, on_delete=models.CASCADE, related_name='survey', default=1)
+ machine = models.ForeignKey(Machine, on_delete=models.CASCADE, related_name='machine', default=0)
+ session = models.ForeignKey(Session, on_delete=models.CASCADE, related_name='session', default=0)
+ survey = models.ForeignKey(Survey, on_delete=models.CASCADE, related_name='survey', default=0)
  time_engaged = models.IntegerField(null=False, blank=False)
  distance_while_active = models.IntegerField(null=False, blank=False)
  hand_position = models.IntegerField(null=False, blank=False)
