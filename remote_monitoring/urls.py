@@ -1,8 +1,10 @@
+from django.conf import settings
 from django.urls import path
 from . import views
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import PasswordChangeView,PasswordChangeDoneView
+from django.conf.urls.static import static
 
 
 
@@ -36,3 +38,6 @@ urlpatterns = [
     
    
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
