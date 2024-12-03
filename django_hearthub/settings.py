@@ -27,14 +27,32 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ['AZURE_SECRET_KEY']
 
+# Get the website hostname from the environment variables
 WEBSITE_HOSTNAME = os.environ.get('WEBSITE_HOSTNAME', None)
-DEBUG = WEBSITE_HOSTNAME == None
 
+# Set DEBUG based on whether WEBSITE_HOSTNAME is defined
+DEBUG = WEBSITE_HOSTNAME is None
 
-ALLOWED_HOSTS = [] if DEBUG else [WEBSITE_HOSTNAME, f"{WEBSITE_HOSTNAME}.azurewebsites.net"]
+# Configure ALLOWED_HOSTS for deployment
+if DEBUG:
+    ALLOWED_HOSTS = []
+else:
+    ALLOWED_HOSTS = [
+        WEBSITE_HOSTNAME, 
+        f"{WEBSITE_HOSTNAME}.azurewebsites.net"
+    ]
 
+# Configure CSRF_TRUSTED_ORIGINS for secure deployments
 if not DEBUG:
-    CSRF_TRUSTED_ORIGINS = [f'https://{WEBSITE_HOSTNAME}', f"https://{WEBSITE_HOSTNAME}.azurewebsites.net"]
+    CSRF_TRUSTED_ORIGINS = [
+        f'https://{WEBSITE_HOSTNAME}',
+        f'https://{WEBSITE_HOSTNAME}.azurewebsites.net'
+    ]
+
+# Example fallback for local development (optional)
+if DEBUG:
+    ALLOWED_HOSTS.append('localhost')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
