@@ -38,11 +38,6 @@ if not DEBUG:
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-
-
-
-
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -73,7 +68,7 @@ ROOT_URLCONF = 'django_hearthub.urls'
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:8000',
     'http://127.0.0.1:8000',  
-    'https://test-poc-gyech5hzbzfmhcdh.uksouth-01.azurewebsites.net/',
+    'https://test-poc-gyech5hzbzfmhcdh.uksouth-01.azurewebsites.net',
 ]
 
 CORS_ALLOW_CREDENTIALS = True
