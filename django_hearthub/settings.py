@@ -27,6 +27,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ['AZURE_SECRET_KEY']
 
+WEBSITE_HOSTNAME = os.environ.get('WEBSITE_HOSTNAME', None)
+DEBUG = WEBSITE_HOSTNAME == None
+
+
+ALLOWED_HOSTS = [] if DEBUG else [WEBSITE_HOSTNAME, f"{WEBSITE_HOSTNAME}.azurewebsites.net"]
+
+if not DEBUG:
+    CSRF_TRUSTED_ORIGINS = [f'https://{WEBSITE_HOSTNAME}', f"https://{WEBSITE_HOSTNAME}.azurewebsites.net"]
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
