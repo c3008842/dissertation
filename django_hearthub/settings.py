@@ -27,6 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ['AZURE_SECRET_KEY']
 
+
 # Get the website hostname from the environment variables
 WEBSITE_HOSTNAME = os.environ.get('WEBSITE_HOSTNAME', None)
 
